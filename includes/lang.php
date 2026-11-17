@@ -1,5 +1,6 @@
 <?php
     // Check for translations
+    $lang = 'en';
     if( isset($_GET['lang']) && !empty($_GET['lang']) ) {
 
         // Here we look for older, full names of languages from the URL.
@@ -12,11 +13,14 @@
             default:
                 $lang = $_GET['lang'];
         }
-
     }
 
 
     $supportedLang = array('zh-cn', 'zh-tw', 'nl', 'en', 'fr', 'de', 'ru');
+
+    if (!in_array($lang, $supportedLang)) {
+        $lang = 'en';
+	}
 
     // Create URL prepend for links
     if (in_array($lang, $supportedLang)) {
